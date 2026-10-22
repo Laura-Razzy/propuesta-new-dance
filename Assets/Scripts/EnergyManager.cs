@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnergyManager : MonoBehaviour
 {
-    [SerializeField] private float CurrentEnergy = 0, MaxEnergy = 5;
+    public float CurrentEnergy = 0, MaxEnergy = 5;
     public bool CombatStart = true, MoveReady = false;
     private void Start()
     {
