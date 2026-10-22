@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 
 public class InputHandler : MonoBehaviour
 {
-    [SerializeField] private float CurrentBeat = 0;
+    [SerializeField] private float CurrentBeat = 0, TotalPoints = 0;
     [SerializeField] private string[] InputArray = new string[4];
     [SerializeField] private float[] PointsArray = new float[4];
 
@@ -13,7 +13,6 @@ public class InputHandler : MonoBehaviour
         if (CurrentBeat < 1)
         {
             CurrentBeat += Time.deltaTime;
-            BeatCheker(CurrentBeat);
         }
         else
         {
@@ -22,23 +21,6 @@ public class InputHandler : MonoBehaviour
         if (GetComponent<EnergyManager>().MoveReady)
         {
             InputTranslator();
-        }
-    }
-
-    void UpdateInputArray(string pressed)
-    {
-        for (int i = 0; i < InputArray.Length; i++)
-        {
-            if (InputArray[i] == null)
-            {
-                InputArray[i] = pressed;
-                break;
-            }
-            else if (InputArray[3] != null)
-            {
-                InputArray[3 - i] = InputArray[2 - i];
-                InputArray[0] = pressed;
-            }
         }
     }
     void InputTranslator()
@@ -60,8 +42,34 @@ public class InputHandler : MonoBehaviour
             UpdateInputArray("right");
         }
     }
-    void BeatCheker(float timing)
+    void UpdateInputArray(string pressed)
+    {
+        for (int i = InputArray.Length - 1; i > 0; i--)
+        {
+            InputArray[i] = InputArray[i - 1];
+            PointsArray[i] = PointsArray[i - 1];
+        }
+        InputArray[0] = pressed;
+        BeatChecker(CurrentBeat);
+    }
+    void BeatChecker(float timing)
     {
 
+        if (timing < 0.25 || timing > 0.75)
+        {
+            PointsArray[0] = 100;
+        }
+        else if (timing < 0.45 || timing > 0.65)
+        {
+            PointsArray[0] = 200;
+        }
+        else
+        {
+            PointsArray[0] = 300;
+        }
+    }
+    void NiceMove()
+    {
+        
     }
 }
