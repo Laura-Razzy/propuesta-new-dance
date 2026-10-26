@@ -31,19 +31,19 @@ public class InputHandler : MonoBehaviour
     }
     void InputTranslator()
     {
-        if (Input.GetKeyDown("a"))
+        if (Input.GetKeyDown("d"))
         {
             UpdateInputArray("left");
         }
-        if (Input.GetKeyDown("s"))
+        if (Input.GetKeyDown("f"))
         {
             UpdateInputArray("down");
         }
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKeyDown("j"))
         {
             UpdateInputArray("up");
         }
-        if (Input.GetKeyDown("f"))
+        if (Input.GetKeyDown("k"))
         {
             UpdateInputArray("right");
         }
@@ -57,7 +57,9 @@ public class InputHandler : MonoBehaviour
         }
         InputArray[0] = pressed;
         BeatChecker(CurrentBeat);
-///        uiManager.MoveHistoryUpdate();
+        /*
+        uiManager.MoveHistoryUpdate();
+        */
     }
     void BeatChecker(float timing)
     {
@@ -76,7 +78,9 @@ public class InputHandler : MonoBehaviour
             PointsArray[0] = 300;
             uiManager.PopUp(300);
         }
-///        uiManager.PointHistoryUpdate();
+        /*
+        uiManager.PointHistoryUpdate();
+        */
         CheckMove();
     }
 
