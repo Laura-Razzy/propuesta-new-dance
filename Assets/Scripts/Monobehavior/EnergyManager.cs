@@ -2,19 +2,28 @@ using UnityEngine;
 
 public class EnergyManager : MonoBehaviour
 {
-    public float CurrentEnergy = 0, MaxEnergy = 5;
-    public bool CombatStart = true, MoveReady = false;
+    [Header("ENERGY MANAGER")]
+
+    #region Variables
+    [Header("VARIABLES")]
+    public float CurrentEnergy;
+    public float MaxEnergy;
+    public bool CombatStart = true;
+    public bool MoveReady = false;
+    #endregion
+
     private void Start()
     {
+        MaxEnergy = 5;
         if (CombatStart)
         {
             CurrentEnergy = 0;
             CombatStart = false;
             MoveReady = false;
-
         }
     }
-    void Update()
+
+    private void Update()
     {
         if (CurrentEnergy < MaxEnergy)
         {

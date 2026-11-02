@@ -4,16 +4,28 @@ using UnityEngine.Rendering;
 
 public class InputHandler : MonoBehaviour
 {
-    [SerializeField] private float CurrentBeat = 0, TotalPoints = 0;
+    [Header("INPUT HANDLER")]
+
+    #region Variables
+    [Header("Variables")]
+    [SerializeField] private float CurrentBeat = 0;
+    [SerializeField] private float TotalPoints = 0;
     public string[] InputArray = new string[4];
     public float[] PointsArray = new float[4];
+    #endregion
+
+    #region Componentes
+    [Header("Componentes")]
     private UIManager uiManager;
     private EnergyManager energyManager;
+    #endregion
+
     private void Awake()
     {
         energyManager = GetComponent<EnergyManager>();
         uiManager = GetComponent<UIManager>();
     }
+
     void Update()
     {
         if (CurrentBeat < 1)
@@ -29,6 +41,8 @@ public class InputHandler : MonoBehaviour
             InputTranslator();
         }
     }
+
+    #region Inputs
     void InputTranslator()
     {
         if (Input.GetKeyDown("d"))
@@ -48,6 +62,7 @@ public class InputHandler : MonoBehaviour
             UpdateInputArray("right");
         }
     }
+
     void UpdateInputArray(string pressed)
     {
         for (int i = InputArray.Length - 1; i > 0; i--)
@@ -61,6 +76,9 @@ public class InputHandler : MonoBehaviour
         uiManager.MoveHistoryUpdate();
         */
     }
+    #endregion
+
+    #region Move/Rhythm Managers
     void BeatChecker(float timing)
     {
         if (timing < 0.25 || timing > 0.75)
@@ -107,4 +125,5 @@ public class InputHandler : MonoBehaviour
             energyManager.MoveReady = false;
         }
     }
+    #endregion
 }

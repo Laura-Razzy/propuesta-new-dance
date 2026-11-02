@@ -4,33 +4,85 @@ using UnityEngine;
 
 public class Hitbox : MonoBehaviour
 {
+    [Header("Hitbox")]
+
+    #region Variables
+    [Header("Variables")]
+    [SerializeField] private float framecount = 0;
+    #endregion
+
+    #region Componentes
+    [Header("Componentes")]
     private HitboxScriptable hitboxProperties;
-    private float framecount = 0;
-    private bool isActive = false;
-    public void Awake()
+    #endregion
+
+    private void Awake()
     {
         gameObject.transform.localScale = new Vector2(hitboxProperties.hitboxData.width, hitboxProperties.hitboxData.height);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
     }
+
+    private void Start()
+    {
+        hitboxProperties.hitboxData.ActiveState = HITBOX.LAG.Startup;
+    }
+
+    #region State Machine
     private void Update()
     {
-        framecount =+ Time.frameCount;
-        if (framecount > hitboxProperties.hitboxData.active || framecount < hitboxProperties.hitboxData.startup)
+        framecount += Time.frameCount;
+        switch (hitboxProperties.hitboxData.ActiveState)
         {
-            isActive = false;
-        }
-        else
-        {
-            isActive = true;
+            case HITBOX.LAG.Startup:
+                if (framecount >= hitboxProperties.hitboxData.startingFrames)
+                {
+                    ChangeActiveState(HITBOX.LAG.Active);
+                }
+                break;
+            case HITBOX.LAG.Active:
+                if (framecount >= hitboxProperties.hitboxData.activeFrames)
+                {
+                    ChangeActiveState(HITBOX.LAG.End);
+                }
+                break;
+            case HITBOX.LAG.End:
+                if (framecount >= hitboxProperties.hitboxData.endFrames)
+                {
+                    Destroy(gameObject);
+                }
+                break;
         }
     }
-    void OnTriggerEnter2D(Collider2D other)
+
+    private void ChangeActiveState(HITBOX.LAG newState)
+    {
+        hitboxProperties.hitboxData.ActiveState = newState;
+        switch (hitboxProperties.hitboxData.ActiveState)
+        {
+            case HITBOX.LAG.Startup:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                break;
+
+            case HITBOX.LAG.Active:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                break;
+
+            case HITBOX.LAG.End:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                break;
+        }
+        framecount = 0;
+    }
+    #endregion
+
+    // Collision: If hits enemy and is active
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Hitbox Contact with something.");
-        if (other.GetComponent<EnemyCombat>() && isActive)
+        if (other.GetComponent<EnemyCombat>() && hitboxProperties.hitboxData.ActiveState == HITBOX.LAG.Active)
         {
             other.GetComponent<EnemyCombat>().TakeDamage();
             Debug.Log("Hitbox Contact with enemy.");
-            Destroy(other.gameObject);
         }
     }
 }

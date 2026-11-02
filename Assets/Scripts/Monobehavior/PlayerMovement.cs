@@ -2,8 +2,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float HorizontalSpeed = 4, VerticalSpeed = 2;
-    private float HorizontalInput, VerticalInput;
+    [Header("PLAYER MOVEMENT")]
+
+    #region Variables
+    [Header("Variables")]
+    [SerializeField] private float HorizontalSpeed = 4; 
+    [SerializeField] private float VerticalSpeed = 2;
+    private float HorizontalInput; 
+    private float VerticalInput;
+    #endregion
+
     void Update()
     {
         HorizontalInput = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
