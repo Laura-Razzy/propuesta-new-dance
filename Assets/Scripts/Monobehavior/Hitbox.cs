@@ -8,16 +8,17 @@ public class Hitbox : MonoBehaviour
 
     #region Variables
     [Header("Variables")]
-    [SerializeField] private float framecount = 0;
+    private float framecount = 0;
     #endregion
 
     #region Componentes
     [Header("Componentes")]
-    private HitboxScriptable hitboxProperties;
+    public HitboxScriptable hitboxProperties;
     #endregion
 
     private void Awake()
     {
+        Debug.Log(this.enabled);
         gameObject.transform.localScale = new Vector2(hitboxProperties.hitboxData.width, hitboxProperties.hitboxData.height);
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
     }
@@ -75,13 +76,12 @@ public class Hitbox : MonoBehaviour
     }
     #endregion
 
-    // Collision: If hits enemy and is active
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Hitbox Contact with something.");
         if (other.GetComponent<EnemyCombat>() && hitboxProperties.hitboxData.ActiveState == HITBOX.LAG.Active)
         {
-            other.GetComponent<EnemyCombat>().TakeDamage();
+            other.GetComponent<EnemyCombat>().TakeDamage(hitboxProperties.hitboxData.damage);
             Debug.Log("Hitbox Contact with enemy.");
         }
     }

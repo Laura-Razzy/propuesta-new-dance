@@ -18,10 +18,12 @@ public class PlayerCombat : MonoBehaviour
     {
         if (Input.GetKeyDown("j"))
         {
+            createHitbox(Resources.Load<HitboxScriptable>("Punch"));
             Debug.Log("Punch!");
         }
         if (Input.GetKeyDown("k"))
         {
+            createHitbox(Resources.Load<HitboxScriptable>("Scriptable Objects/Hitbox/Punch"));
             Debug.Log("Kick!");
         }
     }
@@ -35,5 +37,12 @@ public class PlayerCombat : MonoBehaviour
             Debug.Log("You Lose!");
             Destroy(gameObject);
         }
+    }
+
+    private void createHitbox(HitboxScriptable HitboxObject)
+    {
+        GameObject playerHitbox = Instantiate(playerHitboxPrefab, Vector2.zero, Quaternion.identity);
+        playerHitbox.gameObject.GetComponent<Hitbox>().hitboxProperties = HitboxObject;
+        playerHitbox.transform.SetParent(GameObject.Find("Player").transform);
     }
 }

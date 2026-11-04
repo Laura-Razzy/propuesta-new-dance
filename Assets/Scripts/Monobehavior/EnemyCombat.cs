@@ -13,12 +13,11 @@ public class EnemyCombat : MonoBehaviour
     #region Stats
     [Header("STATS")]
     [SerializeField] private float EnemyHP = 20;
-    [SerializeField] private float EnemyAttack = 5;
     #endregion
 
     #region
     [Header("COMPONENTES")]
-    [SerializeField] private GameObject playerHitboxPrefab;
+    [SerializeField] private GameObject enemyHitboxPrefab;
     #endregion
 
     private void Awake()
@@ -32,7 +31,7 @@ public class EnemyCombat : MonoBehaviour
         ElapsedTime += Time.deltaTime;
         if (ElapsedTime >= RandomTime)
         {
-            Debug.Log("Enemy Attack!");
+            //Debug.Log("Enemy Attack!");
             RandomTime = Random.Range(1, 10);
             ElapsedTime = 0;
         }

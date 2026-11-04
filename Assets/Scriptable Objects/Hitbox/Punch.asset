@@ -17,7 +17,7 @@ MonoBehaviour:
     damage: 10
     width: 1.02
     height: 0.25
-    startingFrames: 0
-    activeFrames: 0
-    endFrames: 0
+    startingFrames: 1
+    activeFrames: 1
+    endFrames: 1
     ActiveState: 0
