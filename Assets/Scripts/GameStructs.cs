@@ -5,7 +5,6 @@ using Unity.VisualScripting;
 [Serializable]
 public struct HITBOX
 {
-    public string name;
     public float damage;
     public float width;
     public float height;
@@ -18,7 +17,6 @@ public struct HITBOX
             Active,
             End
         }
-    public LAG ActiveState;
 }
 
 public struct DIALOGUE

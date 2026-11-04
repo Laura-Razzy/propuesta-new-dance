@@ -100,3 +100,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca6e6d63bc2c6043b8625e35c5199ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitboxProperties: {fileID: 0}

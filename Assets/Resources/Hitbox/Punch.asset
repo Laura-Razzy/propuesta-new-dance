@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 549a096746ff4ba4184c77c1f072c082, type: 3}
-  m_Name: Kick
+  m_Name: Punch
   m_EditorClassIdentifier: 
+  HitboxName: Punch
+  Owner: 0
   hitboxData:
-    name: Kick
-    damage: 15
+    damage: 10
     width: 1.02
     height: 0.25
-    startingFrames: 0
-    activeFrames: 0
-    endFrames: 0
-    ActiveState: 0
+    startingFrames: 100
+    activeFrames: 300
+    endFrames: 200
