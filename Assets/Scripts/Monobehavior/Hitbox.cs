@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static HITBOX;
 
@@ -16,12 +15,14 @@ public class Hitbox : MonoBehaviour
     #region Componentes
     [Header("Componentes")]
     public HitboxScriptable hitboxProperties;
+    public PlayerMovement playerMovement;
     #endregion
 
     private void Start()
     {
+        playerMovement = GetComponentInParent<PlayerMovement>();
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-        transform.SetParent(GameObject.Find("Player").transform);
+        ParentOwnerAssign();
         ActiveState = HITBOX.LAG.Startup;
         gameObject.transform.localScale = new Vector2(hitboxProperties.hitboxData.width, hitboxProperties.hitboxData.height);
     }
@@ -47,6 +48,10 @@ public class Hitbox : MonoBehaviour
             case HITBOX.LAG.End:
                 if (frameCount >= hitboxProperties.hitboxData.endFrames)
                 {
+                    if (hitboxProperties.Owner == HitboxScriptable.HitboxOwner.Player)
+                    {
+                        playerMovement.isStunned = false;
+                    }
                     Destroy(gameObject);
                 }
                 break;
@@ -72,15 +77,42 @@ public class Hitbox : MonoBehaviour
         }
         frameCount = 0;
     }
+
+    private void ParentOwnerAssign()
+    {
+        switch (hitboxProperties.Owner)
+        {
+            case HitboxScriptable.HitboxOwner.Player:
+                transform.SetParent(GameObject.Find("Player").transform);
+                break;
+            case HitboxScriptable.HitboxOwner.Enemy:
+                transform.SetParent(GameObject.Find("Enemy").transform);
+                break;
+        }
+    }
     #endregion
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Hitbox Contact with something.");
+        #region Player hits enemy
         if (other.GetComponent<EnemyCombat>() && ActiveState == HITBOX.LAG.Active)
         {
             other.GetComponent<EnemyCombat>().TakeDamage(hitboxProperties.hitboxData.damage);
             Debug.Log("Hitbox Contact with enemy.");
         }
+
+        #endregion
+
+        #region Enemy hits player
+        if (other.GetComponent<EnemyCombat>() && ActiveState == HITBOX.LAG.Active)
+        {
+            other.GetComponent<EnemyCombat>().TakeDamage(hitboxProperties.hitboxData.damage);
+            Debug.Log("Hitbox Contact with enemy.");
+        }
+        else
+        {
+            return;
+        }
+        #endregion
     }
 }

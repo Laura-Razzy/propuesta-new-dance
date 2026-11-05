@@ -1,6 +1,4 @@
 using System;
-using Unity.Collections;
-using Unity.VisualScripting;
 
 [Serializable]
 public struct HITBOX

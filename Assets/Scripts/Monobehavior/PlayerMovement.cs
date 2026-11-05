@@ -10,12 +10,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float VerticalSpeed = 2;
     private float HorizontalInput; 
     private float VerticalInput;
+    public bool isStunned = false;
     #endregion
 
     void Update()
     {
-        HorizontalInput = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
-        VerticalInput = Input.GetAxisRaw("Vertical") * Time.deltaTime;
-        transform.Translate(HorizontalInput * HorizontalSpeed, VerticalInput * VerticalSpeed, 0);
+        if (!isStunned)
+        {
+            HorizontalInput = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
+            VerticalInput = Input.GetAxisRaw("Vertical") * Time.deltaTime;
+            transform.Translate(HorizontalInput * HorizontalSpeed, VerticalInput * VerticalSpeed, 0);
+        }
     }
 }

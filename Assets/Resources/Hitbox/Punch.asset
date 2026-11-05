@@ -16,8 +16,8 @@ MonoBehaviour:
   Owner: 0
   hitboxData:
     damage: 10
-    width: 1.02
-    height: 0.25
+    width: 0.75
+    height: 0.5
     startingFrames: 100
     activeFrames: 300
     endFrames: 200

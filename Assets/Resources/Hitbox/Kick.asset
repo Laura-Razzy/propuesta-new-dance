@@ -20,4 +20,4 @@ MonoBehaviour:
     height: 0.25
     startingFrames: 300
     activeFrames: 100
-    endFrames: 200
+    endFrames: 100

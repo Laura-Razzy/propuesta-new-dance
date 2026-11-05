@@ -31,7 +31,7 @@ public class EnemyCombat : MonoBehaviour
         ElapsedTime += Time.deltaTime;
         if (ElapsedTime >= RandomTime)
         {
-            //Debug.Log("Enemy Attack!");
+            CreateHitbox(Resources.Load<HitboxScriptable>("Hitbox/EnemyPunch"), transform.position.x - 1, transform.position.y + 0.25f);
             RandomTime = Random.Range(1, 10);
             ElapsedTime = 0;
         }
@@ -47,6 +47,14 @@ public class EnemyCombat : MonoBehaviour
         }
     }
 
+    private void CreateHitbox(HitboxScriptable HitboxObject, float HorizontalSpawn, float VerticalSpawn)
+    {
+        GameObject playerHitbox = Instantiate(enemyHitboxPrefab, new Vector2(HorizontalSpawn, VerticalSpawn), Quaternion.identity);
+        playerHitbox.transform.SetParent(GameObject.Find("Enemy").transform);
+        playerHitbox.gameObject.GetComponent<Hitbox>().hitboxProperties = HitboxObject;
+    }
+
+    /* GOD IS DEAD
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Hitbox Contact with something.");
@@ -56,4 +64,5 @@ public class EnemyCombat : MonoBehaviour
             Debug.Log("Hitbox Contact with player.");
         }
     }
+    */
 }
