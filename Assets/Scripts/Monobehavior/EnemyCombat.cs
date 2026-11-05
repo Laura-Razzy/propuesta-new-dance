@@ -46,4 +46,14 @@ public class EnemyCombat : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Hitbox Contact with something.");
+        if (other.GetComponent<PlayerCombat>())  
+        {
+            other.GetComponent<PlayerCombat>().PlayerTakeDamage(20);
+            Debug.Log("Hitbox Contact with player.");
+        }
+    }
 }

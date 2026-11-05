@@ -6,7 +6,7 @@ public class PlayerCombat : MonoBehaviour
 
     #region Stats
     [Header("Stats")]
-    [SerializeField] private float PlayerHP;
+    [SerializeField] private float PlayerHP = 50;
     #endregion
 
     #region Componentes
@@ -43,5 +43,15 @@ public class PlayerCombat : MonoBehaviour
     {
         GameObject playerHitbox = Instantiate(playerHitboxPrefab, transform);
         playerHitbox.gameObject.GetComponent<Hitbox>().hitboxProperties = HitboxObject;
+    }
+
+    public void PlayerTakeDamage(float DamageTaken)
+    {
+        PlayerHP -= DamageTaken;
+        if (PlayerHP <= 0)
+        {
+            Debug.Log("You Lose!");
+            Destroy(gameObject);
+        }
     }
 }
