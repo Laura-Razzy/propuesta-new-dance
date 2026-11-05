@@ -16,13 +16,16 @@ public class Hitbox : MonoBehaviour
     [Header("Componentes")]
     public HitboxScriptable hitboxProperties;
     public PlayerMovement playerMovement;
+    private BoxCollider2D Collider;
     #endregion
 
     private void Start()
     {
+        Collider = GetComponent<BoxCollider2D>();
         playerMovement = GetComponentInParent<PlayerMovement>();
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
         ParentOwnerAssign();
+        Collider.isTrigger = false;
         ActiveState = HITBOX.LAG.Startup;
         gameObject.transform.localScale = new Vector2(hitboxProperties.hitboxData.width, hitboxProperties.hitboxData.height);
     }
@@ -68,10 +71,12 @@ public class Hitbox : MonoBehaviour
                 break;
 
             case HITBOX.LAG.Active:
+                Collider.isTrigger = true;
                 gameObject.GetComponent<SpriteRenderer>().color = Color.green;
                 break;
 
             case HITBOX.LAG.End:
+                Collider.isTrigger = false;
                 gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                 break;
         }
@@ -94,24 +99,19 @@ public class Hitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        #region Player hits enemy
-        if (other.GetComponent<EnemyCombat>() && ActiveState == HITBOX.LAG.Active)
+        #region Player hits enemy.
+        if (other.GetComponent<EnemyCombat>() && hitboxProperties.Owner == HitboxScriptable.HitboxOwner.Player)
         {
-            other.GetComponent<EnemyCombat>().TakeDamage(hitboxProperties.hitboxData.damage);
-            Debug.Log("Hitbox Contact with enemy.");
+            other.GetComponent<EnemyCombat>().EnemyTakeDamage(hitboxProperties.hitboxData.damage);
+            Debug.Log("Player Hitbox Contact with enemy.");
         }
-
         #endregion
 
-        #region Enemy hits player
-        if (other.GetComponent<EnemyCombat>() && ActiveState == HITBOX.LAG.Active)
+        #region Enemy hits player.
+        if (other.GetComponent<PlayerCombat>() && hitboxProperties.Owner == HitboxScriptable.HitboxOwner.Enemy)
         {
-            other.GetComponent<EnemyCombat>().TakeDamage(hitboxProperties.hitboxData.damage);
-            Debug.Log("Hitbox Contact with enemy.");
-        }
-        else
-        {
-            return;
+            other.GetComponent<PlayerCombat>().PlayerTakeDamage(hitboxProperties.hitboxData.damage);
+            Debug.Log("Enemy Hitbox Contact with player.");
         }
         #endregion
     }

@@ -38,7 +38,7 @@ public class EnemyCombat : MonoBehaviour
     }
 
     // Takes damage if collides with player hitbox, if it has 0 or less HP, dies.
-    public void TakeDamage(float DamageTaken) 
+    public void EnemyTakeDamage(float DamageTaken) 
     {
         EnemyHP -= DamageTaken;
         if (EnemyHP <= 0)
@@ -53,16 +53,4 @@ public class EnemyCombat : MonoBehaviour
         playerHitbox.transform.SetParent(GameObject.Find("Enemy").transform);
         playerHitbox.gameObject.GetComponent<Hitbox>().hitboxProperties = HitboxObject;
     }
-
-    /* GOD IS DEAD
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("Hitbox Contact with something.");
-        if (other.GetComponent<PlayerCombat>())  
-        {
-            other.GetComponent<PlayerCombat>().PlayerTakeDamage(20);
-            Debug.Log("Hitbox Contact with player.");
-        }
-    }
-    */
 }

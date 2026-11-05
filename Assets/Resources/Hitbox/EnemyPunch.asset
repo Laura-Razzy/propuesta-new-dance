@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549a096746ff4ba4184c77c1f072c082, type: 3}
   m_Name: EnemyPunch
   m_EditorClassIdentifier: 
-  HitboxName: Punch
+  HitboxName: Enemy Punch
   Owner: 1
   hitboxData:
     damage: 15
     width: 1.02
     height: 0.25
-    startingFrames: 300
-    activeFrames: 100
-    endFrames: 200
+    startingFrames: 11
+    activeFrames: 5
+    endFrames: 29
