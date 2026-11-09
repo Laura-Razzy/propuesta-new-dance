@@ -4,15 +4,11 @@ public class PlayerCombat : MonoBehaviour
 {
     [Header("PLAYER COMBAT")]
 
-    #region Stats
-    [Header("Stats")]
-    [SerializeField] private float PlayerHP = 50;
-    #endregion
-
     #region Componentes
-    [Header("Componentes")]
+    [Header(">COMPONENTES")]
     [SerializeField] private GameObject playerHitboxPrefab;
     private PlayerMovement playerMovement;
+    private DataManager dataManager;
     #endregion
 
     private void Start()
@@ -37,17 +33,6 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    // Takes damage if collides with enemy hitbox, if it has 0 or less HP, dies.
-    public void TakeDamage(float DamageTaken)
-    {
-        PlayerHP -= DamageTaken;
-        if (PlayerHP <= 0)
-        {
-            Debug.Log("You Lose!");
-            Destroy(gameObject);
-        }
-    }
-
     private void CreateHitbox(HitboxScriptable HitboxObject, float HorizontalSpawn, float VerticalSpawn)
     {
         playerMovement.isStunned = true;
@@ -58,8 +43,8 @@ public class PlayerCombat : MonoBehaviour
 
     public void PlayerTakeDamage(float DamageTaken)
     {
-        PlayerHP -= DamageTaken;
-        if (PlayerHP <= 0)
+        dataManager.GameManagement.PlayerHP -= DamageTaken;
+        if (dataManager.GameManagement.PlayerHP <= 0)
         {
             Debug.Log("You Lose!");
             Destroy(gameObject);

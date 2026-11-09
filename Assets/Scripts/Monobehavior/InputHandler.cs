@@ -8,7 +8,16 @@ public class InputHandler : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private float CurrentBeat = 0;
     [SerializeField] private float TotalPoints = 0;
-    public string[] InputArray = new string[4];
+    public enum INPUT
+    {
+        empty,
+        left, 
+        down,  
+        up, 
+        right 
+    }
+    public INPUT InputDirection;
+    public INPUT[] InputArray = new INPUT[4];
     public float[] PointsArray = new float[4];
     #endregion
 
@@ -16,12 +25,14 @@ public class InputHandler : MonoBehaviour
     [Header("Componentes")]
     private UIManager uiManager;
     private EnergyManager energyManager;
+    private TransitionManager transitionManager;
     #endregion
 
     private void Awake()
     {
         energyManager = GetComponent<EnergyManager>();
         uiManager = GetComponent<UIManager>();
+        transitionManager = GetComponent<TransitionManager>();
     }
 
     void Update()
@@ -33,6 +44,7 @@ public class InputHandler : MonoBehaviour
         else if (CurrentBeat > 1)
         {
             CurrentBeat = 0;
+            transform.position = new Vector3(-6.22f, -1.52f, 0);
         }
         if (energyManager.MoveReady)
         {
@@ -43,33 +55,46 @@ public class InputHandler : MonoBehaviour
     #region Inputs
     void InputTranslator()
     {
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            UpdateInputArray("left");
+            transform.position = new Vector3(-6.22f, -1.52f, 0);
+            InputDirection = INPUT.left;
+            transform.Translate(-1, 0, 0);
         }
-        if (Input.GetKeyDown("f"))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            UpdateInputArray("down");
+            transform.position = new Vector3(-6.22f, -1.52f, 0);
+            InputDirection = INPUT.down;
+            transform.Translate(0, -1, 0);
         }
-        if (Input.GetKeyDown("j"))
+        if (Input.GetKeyDown(KeyCode.J))
         {
-            UpdateInputArray("up");
+            transform.position = new Vector3(-6.22f, -1.52f, 0);
+            InputDirection = INPUT.up;
+            transform.Translate(0, 1, 0);
         }
-        if (Input.GetKeyDown("k"))
+        if (Input.GetKeyDown(KeyCode.K))
         {
-            UpdateInputArray("right");
+            transform.position = new Vector3(-6.22f, -1.52f, 0);
+            InputDirection = INPUT.right;
+            transform.Translate(1, 0, 0);
         }
+        UpdateInputArray(InputDirection);
+        InputDirection = INPUT.empty;
     }
 
-    void UpdateInputArray(string pressed)
+    void UpdateInputArray(INPUT pressed)
     {
-        for (int i = InputArray.Length - 1; i > 0; i--)
+        if (pressed != INPUT.empty)
         {
-            InputArray[i] = InputArray[i - 1];
-            PointsArray[i] = PointsArray[i - 1];
+            for (int i = InputArray.Length - 1; i > 0; i--)
+            {
+                InputArray[i] = InputArray[i - 1];
+                PointsArray[i] = PointsArray[i - 1];
+            }
+            InputArray[0] = pressed;
+            BeatChecker(CurrentBeat);
         }
-        InputArray[0] = pressed;
-        BeatChecker(CurrentBeat);
         /*
         uiManager.MoveHistoryUpdate();
         */
@@ -103,20 +128,21 @@ public class InputHandler : MonoBehaviour
     void CheckMove()
     {
         bool match =
-            InputArray[3] == "up" &&
-            InputArray[2] == "down" &&
-            InputArray[1] == "left" &&
-            InputArray[0] == "right";
+            InputArray[3] == INPUT.up &&
+            InputArray[2] == INPUT.down &&
+            InputArray[1] == INPUT.left &&
+            InputArray[0] == INPUT.right;
         if (match)
         {
             for (int i = 0; i < PointsArray.Length; i++)
             {
                 TotalPoints += PointsArray[i];
                 uiManager.TotalPointUpdate(TotalPoints);
+                transitionManager.SwitchToBeatEmUp();
             }
             for (int i = 0; i < InputArray.Length; i++)
             {
-                InputArray[i] = null;
+                InputArray[i] = INPUT.empty;
                 PointsArray[i] = 0;
             }
             energyManager.CurrentEnergy = 0;

@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class EnergyManager : MonoBehaviour
@@ -5,19 +6,26 @@ public class EnergyManager : MonoBehaviour
     [Header("ENERGY MANAGER")]
 
     #region Variables
-    [Header("VARIABLES")]
+    [Header(">VARIABLES")]
     public float CurrentEnergy;
     public float MaxEnergy;
+    public int intCurrentEnergy;
     public bool CombatStart = true;
     public bool MoveReady = false;
     #endregion
 
+    #region Componentes
+    [Header(">COMPONENTES")]
+    private DataManager dataManager;
+    #endregion
+
     private void Start()
     {
-        MaxEnergy = 5;
+        dataManager = gameObject.Find("Game Manager")GetComponent<DataManager>();
+        intCurrentEnergy = (int)dataManager.GameManagement.PlayerCurrentEnergy;
         if (CombatStart)
         {
-            CurrentEnergy = 0;
+            dataManager.GameManagement.PlayerCurrentEnergy = 0;
             CombatStart = false;
             MoveReady = false;
         }
@@ -25,9 +33,10 @@ public class EnergyManager : MonoBehaviour
 
     private void Update()
     {
-        if (CurrentEnergy < MaxEnergy)
+        if (dataManager.GameManagement.PlayerCurrentEnergy < dataManager.GameManagement.PlayerHP)
         {
             CurrentEnergy += Time.deltaTime;
+            intCurrentEnergy = (int)dataManager.GameManagement.PlayerCurrentEnergy;
         }
         else
         {

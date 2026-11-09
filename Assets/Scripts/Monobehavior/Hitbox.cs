@@ -17,6 +17,7 @@ public class Hitbox : MonoBehaviour
     public HitboxScriptable hitboxProperties;
     public PlayerMovement playerMovement;
     private BoxCollider2D Collider;
+    private TransitionManager transitionManager;
     #endregion
 
     private void Start()
@@ -24,6 +25,7 @@ public class Hitbox : MonoBehaviour
         Collider = GetComponent<BoxCollider2D>();
         playerMovement = GetComponentInParent<PlayerMovement>();
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        transitionManager = GetComponent<TransitionManager>();
         ParentOwnerAssign();
         Collider.isTrigger = false;
         ActiveState = HITBOX.LAG.Startup;
@@ -102,7 +104,8 @@ public class Hitbox : MonoBehaviour
         #region Player hits enemy.
         if (other.GetComponent<EnemyCombat>() && hitboxProperties.Owner == HitboxScriptable.HitboxOwner.Player)
         {
-            other.GetComponent<EnemyCombat>().EnemyTakeDamage(hitboxProperties.hitboxData.damage);
+            //other.GetComponent<EnemyCombat>().EnemyTakeDamage(hitboxProperties.hitboxData.damage);
+            GameObject.Find("Game Manager").GetComponent<TransitionManager>().SwitchToCombat();
             Debug.Log("Player Hitbox Contact with enemy.");
         }
         #endregion

@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 7069281090531114716}
   - component: {fileID: 3670130696215852106}
   - component: {fileID: 8078993943672193582}
+  - component: {fileID: 6289051774529211778}
   - component: {fileID: 4491527736653786761}
   - component: {fileID: 7520411896831454609}
   - component: {fileID: 7882537537685387619}
@@ -244,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HorizontalSpeed: 4
   VerticalSpeed: 2
+  isStunned: 0
 --- !u!114 &8078993943672193582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,8 +258,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac94951f0432e4c94ac5147ad3df71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerHP: 0
+  PlayerHP: 50
   playerHitboxPrefab: {fileID: 6217109746953886632, guid: 4d61db48091ddef4282bd60151e3b187, type: 3}
+--- !u!114 &6289051774529211778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7910688661338547923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806527c90a6714543bd3c3d2c2e1d773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &4491527736653786761
 BoxCollider2D:
   m_ObjectHideFlags: 0

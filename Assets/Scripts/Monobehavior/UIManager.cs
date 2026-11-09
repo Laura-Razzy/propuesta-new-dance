@@ -6,7 +6,7 @@ public class UIManager : MonoBehaviour
     [Header("UI MANAGER")]
 
     #region Variables
-    [Header("Variables")]
+    [Header(">VARIABLES")]
     [SerializeField] private float ElapsedTime = 0;
     [SerializeField] private float MaxTime = 1;/*
     [SerializeField] private string FirstInLine = null; 
@@ -16,20 +16,31 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Componentes
-    [Header("Componentes")]
+    [Header(">TEXTOS")]
     public TextMeshProUGUI MoveHistory;
     public TextMeshProUGUI PointHistory;
     public TextMeshProUGUI PointPopUp;
     public TextMeshProUGUI PointTotal;
+    public TextMeshProUGUI EnergyText;
+    public TextMeshProUGUI ReadyText;
+    #endregion
+
+    #region Componentes
+    [Header(">COMPONENTES")]
     private InputHandler inputHandler;
+    private DataManager dataManager;
+    private EnergyManager energyManager;
     #endregion
 
     private void Start()
     {
+        energyManager = GetComponent<EnergyManager>();
         MoveHistory.text = string.Empty;
         PointHistory.text = string.Empty;
         PointPopUp.text = string.Empty;
         PointTotal.text = "0";
+        EnergyText.text = energyManager.intCurrentEnergy + "/" + dataManager.GameManagement.PlayerMaxEnergy;
+        ReadyText.text = string.Empty;
     }
 
     private void Update()
@@ -38,6 +49,15 @@ public class UIManager : MonoBehaviour
         if (ElapsedTime >= MaxTime)
         {
             PointPopUp.text = string.Empty;
+        }
+        EnergyText.text = energyManager.intCurrentEnergy + "/" + energyManager.MaxEnergy;
+        if (energyManager.intCurrentEnergy == energyManager.MaxEnergy)
+        {
+            ReadyText.text = "Move Ready";
+        }
+        else
+        {
+            ReadyText.text = string.Empty;
         }
     }
 
