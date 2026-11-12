@@ -30,17 +30,21 @@ public class UIManager : MonoBehaviour
     private InputHandler inputHandler;
     private DataManager dataManager;
     private EnergyManager energyManager;
+    [SerializeField] GameObject LoseScreen;
     #endregion
 
     private void Start()
     {
         energyManager = GetComponent<EnergyManager>();
+        dataManager = GameObject.Find("Game Manager").GetComponent<DataManager>();
+        inputHandler = GetComponent<InputHandler>();
         MoveHistory.text = string.Empty;
         PointHistory.text = string.Empty;
         PointPopUp.text = string.Empty;
         PointTotal.text = "0";
         EnergyText.text = energyManager.intCurrentEnergy + "/" + dataManager.GameManagement.PlayerMaxEnergy;
         ReadyText.text = string.Empty;
+        LoseScreen.SetActive(false);
     }
 
     private void Update()
@@ -94,4 +98,9 @@ public class UIManager : MonoBehaviour
         PointTotal.text = total.ToString();
     }
     #endregion
+
+    public void GameOver()
+    {
+        LoseScreen.SetActive(true);
+    }
 }

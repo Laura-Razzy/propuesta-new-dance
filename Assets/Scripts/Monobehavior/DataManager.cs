@@ -19,7 +19,6 @@ public class DataManager : MonoBehaviour
     }
     private void Start()
     {
-        GameManagement.PlayerHP = 50;
         GameManagement.PlayerCurrentEnergy = 0;
         GameManagement.PlayerMaxEnergy = 5;
     }

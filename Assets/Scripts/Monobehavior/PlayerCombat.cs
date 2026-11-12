@@ -9,11 +9,18 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private GameObject playerHitboxPrefab;
     private PlayerMovement playerMovement;
     private DataManager dataManager;
+    private UIManager uiManager;
     #endregion
 
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        dataManager = GetComponent<DataManager>();
+        uiManager = GameObject.Find("Game Manager").GetComponent<UIManager>();
+        dataManager = GameObject.Find("Game Manager").GetComponent<DataManager>();
+        uiManager = GameObject.Find("Game Manager").GetComponent<UIManager>();
+        dataManager.GameManagement.PlayerHP = 50;
+        Time.timeScale = 1;
     }
 
     private void Update()
@@ -44,10 +51,22 @@ public class PlayerCombat : MonoBehaviour
     public void PlayerTakeDamage(float DamageTaken)
     {
         dataManager.GameManagement.PlayerHP -= DamageTaken;
+        Debug.Log(dataManager.GameManagement.PlayerHP);
         if (dataManager.GameManagement.PlayerHP <= 0)
         {
             Debug.Log("You Lose!");
-            Destroy(gameObject);
+            uiManager.GameOver();
+            Time.timeScale = 0;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("What");
+        if (other.GetComponent<Item>())
+        {
+            Debug.Log("Item Get!");
+            Destroy(other.gameObject);
         }
     }
 }

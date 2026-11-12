@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using static HITBOX;
 
@@ -27,7 +26,7 @@ public class Hitbox : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
         transitionManager = GetComponent<TransitionManager>();
         ParentOwnerAssign();
-        Collider.isTrigger = false;
+        Collider.isTrigger = true;
         ActiveState = HITBOX.LAG.Startup;
         gameObject.transform.localScale = new Vector2(hitboxProperties.hitboxData.width, hitboxProperties.hitboxData.height);
     }
@@ -101,18 +100,19 @@ public class Hitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("What");
         #region Player hits enemy.
         if (other.GetComponent<EnemyCombat>() && hitboxProperties.Owner == HitboxScriptable.HitboxOwner.Player)
         {
-            //other.GetComponent<EnemyCombat>().EnemyTakeDamage(hitboxProperties.hitboxData.damage);
             GameObject.Find("Game Manager").GetComponent<TransitionManager>().SwitchToCombat();
             Debug.Log("Player Hitbox Contact with enemy.");
         }
         #endregion
-
+        Debug.Log("please help");
         #region Enemy hits player.
         if (other.GetComponent<PlayerCombat>() && hitboxProperties.Owner == HitboxScriptable.HitboxOwner.Enemy)
         {
+            Debug.Log("hi");
             other.GetComponent<PlayerCombat>().PlayerTakeDamage(hitboxProperties.hitboxData.damage);
             Debug.Log("Enemy Hitbox Contact with player.");
         }

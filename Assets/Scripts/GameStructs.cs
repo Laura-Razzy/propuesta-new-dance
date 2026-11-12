@@ -39,3 +39,8 @@ public struct MANAGER
     }
     public GAMESTATE CurrentGGameState;
 }
+
+public struct ITEM
+{
+    public string name;
+}
