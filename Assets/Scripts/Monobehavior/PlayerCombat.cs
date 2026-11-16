@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerCombat : MonoBehaviour
     private PlayerMovement playerMovement;
     private DataManager dataManager;
     private UIManager uiManager;
+    private TransitionManager transitionManager;
     #endregion
 
     private void Start()
@@ -17,8 +19,8 @@ public class PlayerCombat : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         dataManager = GetComponent<DataManager>();
         uiManager = GameObject.Find("Game Manager").GetComponent<UIManager>();
+        transitionManager = GameObject.Find("Game Manager").GetComponent<TransitionManager>();
         dataManager = GameObject.Find("Game Manager").GetComponent<DataManager>();
-        uiManager = GameObject.Find("Game Manager").GetComponent<UIManager>();
         dataManager.GameManagement.PlayerHP = 50;
         Time.timeScale = 1;
     }
@@ -62,11 +64,9 @@ public class PlayerCombat : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("What");
-        if (other.GetComponent<Item>())
+        if (other.gameObject.name == "BossLoadingZone")
         {
-            Debug.Log("Item Get!");
-            Destroy(other.gameObject);
+            transitionManager.SwitchToCombat();
         }
     }
 }
