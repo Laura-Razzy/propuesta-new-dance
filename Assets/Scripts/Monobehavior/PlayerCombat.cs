@@ -10,7 +10,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private GameObject playerHitboxPrefab;
     private PlayerMovement playerMovement;
     private DataManager dataManager;
-    private UIManager uiManager;
+    private BossUIManager bossUIManager;
     private TransitionManager transitionManager;
     #endregion
 
@@ -18,7 +18,7 @@ public class PlayerCombat : MonoBehaviour
     {
         playerMovement = GetComponent<PlayerMovement>();
         dataManager = GetComponent<DataManager>();
-        uiManager = GameObject.Find("Game Manager").GetComponent<UIManager>();
+//        bossUIManager = GameObject.Find("Canvas").GetComponent<BossUIManager>();
         transitionManager = GameObject.Find("Game Manager").GetComponent<TransitionManager>();
         dataManager = GameObject.Find("Game Manager").GetComponent<DataManager>();
         dataManager.GameManagement.PlayerHP = 50;
@@ -57,7 +57,7 @@ public class PlayerCombat : MonoBehaviour
         if (dataManager.GameManagement.PlayerHP <= 0)
         {
             Debug.Log("You Lose!");
-            uiManager.GameOver();
+//            bossUIManager.GameOver();
             Time.timeScale = 0;
         }
     }
@@ -67,6 +67,7 @@ public class PlayerCombat : MonoBehaviour
         if (other.gameObject.name == "BossLoadingZone")
         {
             transitionManager.SwitchToCombat();
+            dataManager.GameManagement.CurrentGGameState = MANAGER.GAMESTATE.BigFight;
         }
     }
 }

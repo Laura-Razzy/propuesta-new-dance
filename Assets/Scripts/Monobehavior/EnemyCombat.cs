@@ -49,8 +49,8 @@ public class EnemyCombat : MonoBehaviour
 
     private void CreateHitbox(HitboxScriptable HitboxObject, float HorizontalSpawn, float VerticalSpawn)
     {
-        GameObject playerHitbox = Instantiate(enemyHitboxPrefab, new Vector2(HorizontalSpawn, VerticalSpawn), Quaternion.identity);
-        playerHitbox.transform.SetParent(GameObject.Find("Enemy").transform);
-        playerHitbox.gameObject.GetComponent<Hitbox>().hitboxProperties = HitboxObject;
+        GameObject enemyHitbox = Instantiate(enemyHitboxPrefab, new Vector2(HorizontalSpawn, VerticalSpawn), Quaternion.identity);
+        enemyHitbox.transform.SetParent(transform);
+        enemyHitbox.gameObject.GetComponent<Hitbox>().hitboxProperties = HitboxObject;
     }
 }

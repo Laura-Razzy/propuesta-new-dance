@@ -16,14 +16,12 @@ public class Hitbox : MonoBehaviour
     public HitboxScriptable hitboxProperties;
     public PlayerMovement playerMovement;
     private BoxCollider2D Collider;
-    private TransitionManager transitionManager;
     #endregion
 
     private void Awake()
     {
         Collider = GetComponent<BoxCollider2D>();
         playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
-        transitionManager = GetComponent<TransitionManager>();
     }
 
     private void Start()
@@ -93,7 +91,7 @@ public class Hitbox : MonoBehaviour
                 transform.SetParent(GameObject.Find("Player").transform);
                 break;
             case HitboxScriptable.HitboxOwner.Enemy:
-                transform.SetParent(GameObject.Find("Enemy").transform);
+                //transform.SetParent(GameObject.Find("Enemy").transform);
                 break;
         }
     }

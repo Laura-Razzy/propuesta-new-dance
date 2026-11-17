@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: e7666ea2c98716b43a9bfff7a946fed0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7967778144315537296
+    second: QueenYMCASheet_0
+  - first:
+      213: 2519781043771288260
+    second: QueenYMCASheet_1
+  - first:
+      213: -966299981035202674
+    second: QueenYMCASheet_2
+  - first:
+      213: 752085867058415423
+    second: QueenYMCASheet_3
+  - first:
+      213: 1683740242974453975
+    second: QueenYMCASheet_4
+  - first:
+      213: 5526884695343941723
+    second: QueenYMCASheet_5
+  - first:
+      213: -2587016264071256283
+    second: QueenYMCASheet_6
+  - first:
+      213: -5229806068732572721
+    second: QueenYMCASheet_7
+  - first:
+      213: 8026550827595913155
+    second: QueenYMCASheet_8
+  - first:
+      213: 8453720477914162096
+    second: QueenYMCASheet_9
+  - first:
+      213: -8429934060079988680
+    second: QueenYMCASheet_10
+  - first:
+      213: -7260285368220657651
+    second: QueenYMCASheet_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: QueenYMCASheet_0
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 0
+        width: 372
+        height: 501
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0977c05d10c339e60800000000000000
+      internalID: 7967778144315537296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QueenYMCASheet_1
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 479
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ca20c9428f08f220800000000000000
+      internalID: 2519781043771288260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QueenYMCASheet_2
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 0
+        width: 372
+        height: 501
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e871ee379430792f0800000000000000
+      internalID: -966299981035202674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QueenYMCASheet_3
+      rect:
+        serializedVersion: 2
+        x: 939
+        y: 479
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f37cb928c12ff6a00800000000000000
+      internalID: 752085867058415423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QueenYMCASheet_4
+      rect:
+        serializedVersion: 2
+        x: 1429
+        y: 0
+        width: 302
+        height: 501
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d0b58484d8dd5710800000000000000
+      internalID: 1683740242974453975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QueenYMCASheet_5
+      rect:
+        serializedVersion: 2
+        x: 1579
+        y: 479
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b58c484095073bc40800000000000000
+      internalID: 5526884695343941723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QueenYMCASheet_6
+      rect:
+        serializedVersion: 2
+        x: 2069
+        y: 0
+        width: 302
+        height: 501
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 527efd71a62191cd0800000000000000
+      internalID: -2587016264071256283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QueenYMCASheet_7
+      rect:
+        serializedVersion: 2
+        x: 2219
+        y: 479
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcb4305d61ffb67b0800000000000000
+      internalID: -5229806068732572721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QueenYMCASheet_8
+      rect:
+        serializedVersion: 2
+        x: 2709
+        y: 0
+        width: 362
+        height: 541
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c7d8728379046f60800000000000000
+      internalID: 8026550827595913155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QueenYMCASheet_9
+      rect:
+        serializedVersion: 2
+        x: 3349
+        y: 0
+        width: 362
+        height: 541
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b3e4842cf5a15570800000000000000
+      internalID: 8453720477914162096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QueenYMCASheet_10
+      rect:
+        serializedVersion: 2
+        x: 3989
+        y: 0
+        width: 262
+        height: 561
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83047f4d2abd20b80800000000000000
+      internalID: -8429934060079988680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: QueenYMCASheet_11
+      rect:
+        serializedVersion: 2
+        x: 4629
+        y: 0
+        width: 262
+        height: 561
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d08dd3b9ce84e3b90800000000000000
+      internalID: -7260285368220657651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      QueenYMCASheet_0: 7967778144315537296
+      QueenYMCASheet_1: 2519781043771288260
+      QueenYMCASheet_10: -8429934060079988680
+      QueenYMCASheet_11: -7260285368220657651
+      QueenYMCASheet_2: -966299981035202674
+      QueenYMCASheet_3: 752085867058415423
+      QueenYMCASheet_4: 1683740242974453975
+      QueenYMCASheet_5: 5526884695343941723
+      QueenYMCASheet_6: -2587016264071256283
+      QueenYMCASheet_7: -5229806068732572721
+      QueenYMCASheet_8: 8026550827595913155
+      QueenYMCASheet_9: 8453720477914162096
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

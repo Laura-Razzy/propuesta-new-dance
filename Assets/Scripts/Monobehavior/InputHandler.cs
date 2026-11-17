@@ -23,7 +23,10 @@ public class InputHandler : MonoBehaviour
 
     #region Componentes
     [Header("Componentes")]
-    private UIManager uiManager;
+    
+    [SerializeField] GameObject gameManager;
+    private DataManager dataManager;
+    private BossUIManager bossUIManager;
     private EnergyManager energyManager;
     private TransitionManager transitionManager;
     #endregion
@@ -31,8 +34,9 @@ public class InputHandler : MonoBehaviour
     private void Awake()
     {
         energyManager = GetComponent<EnergyManager>();
-        uiManager = GetComponent<UIManager>();
-        transitionManager = GetComponent<TransitionManager>();
+        bossUIManager = GameObject.Find("Canvas").GetComponent<BossUIManager>();
+        dataManager = gameManager.GetComponent<DataManager>();
+        transitionManager = gameManager.GetComponent<TransitionManager>();
     }
 
     void Update()
@@ -107,17 +111,17 @@ public class InputHandler : MonoBehaviour
         if (timing < 0.25 || timing > 0.75)
         {
             PointsArray[0] = 100;
-            uiManager.PopUp(100);
+            bossUIManager.PopUp(100);
         }
         else if (timing < 0.45 || timing > 0.65)
         {
             PointsArray[0] = 200;
-            uiManager.PopUp(200);
+            bossUIManager.PopUp(200);
         }
         else
         {
             PointsArray[0] = 300;
-            uiManager.PopUp(300);
+            bossUIManager.PopUp(300);
         }
         /*
         uiManager.PointHistoryUpdate();
@@ -137,15 +141,16 @@ public class InputHandler : MonoBehaviour
             for (int i = 0; i < PointsArray.Length; i++)
             {
                 TotalPoints += PointsArray[i];
-                uiManager.TotalPointUpdate(TotalPoints);
+                bossUIManager.TotalPointUpdate(TotalPoints);
                 transitionManager.SwitchToBeatEmUp();
+                dataManager.GameManagement.CurrentGGameState = MANAGER.GAMESTATE.BeatEmUp;
             }
             for (int i = 0; i < InputArray.Length; i++)
             {
                 InputArray[i] = INPUT.empty;
                 PointsArray[i] = 0;
             }
-            energyManager.CurrentEnergy = 0;
+            dataManager.GameManagement.PlayerCurrentEnergy = 0;
             energyManager.MoveReady = false;
         }
     }

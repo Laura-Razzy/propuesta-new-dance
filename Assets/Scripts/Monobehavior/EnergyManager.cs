@@ -6,8 +6,6 @@ public class EnergyManager : MonoBehaviour
 
     #region Variables
     [Header(">VARIABLES")]
-    public float CurrentEnergy;
-    public float MaxEnergy;
     public int intCurrentEnergy;
     public bool CombatStart = true;
     public bool MoveReady = false;

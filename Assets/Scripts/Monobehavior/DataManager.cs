@@ -16,10 +16,12 @@ public class DataManager : MonoBehaviour
        {
             Destroy(gameObject);
        }
+        GameManagement.CurrentGGameState = MANAGER.GAMESTATE.BeatEmUp;
     }
     private void Start()
     {
         GameManagement.PlayerCurrentEnergy = 0;
         GameManagement.PlayerMaxEnergy = 5;
+        GameManagement.PlayerCurrentEnergy = 0;
     }
 }

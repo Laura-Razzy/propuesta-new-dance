@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public class BossUIManager : MonoBehaviour
 {
     [Header("UI MANAGER")]
 
@@ -35,9 +35,9 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        energyManager = GetComponent<EnergyManager>();
+        energyManager = GameObject.Find("Player").GetComponent<EnergyManager>();
         dataManager = GameObject.Find("Game Manager").GetComponent<DataManager>();
-        inputHandler = GetComponent<InputHandler>();
+        inputHandler = GameObject.Find("Player").GetComponent<InputHandler>();
         MoveHistory.text = string.Empty;
         PointHistory.text = string.Empty;
         PointPopUp.text = string.Empty;
@@ -50,18 +50,21 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         ElapsedTime += Time.deltaTime;
-        if (ElapsedTime >= MaxTime)
+        if (dataManager.GameManagement.CurrentGGameState == MANAGER.GAMESTATE.BigFight)
         {
-            PointPopUp.text = string.Empty;
-        }
-        EnergyText.text = energyManager.intCurrentEnergy + "/" + energyManager.MaxEnergy;
-        if (energyManager.intCurrentEnergy == energyManager.MaxEnergy)
-        {
-            ReadyText.text = "Move Ready";
-        }
-        else
-        {
-            ReadyText.text = string.Empty;
+            if (ElapsedTime >= MaxTime)
+            {
+                PointPopUp.text = string.Empty;
+            }
+            EnergyText.text = energyManager.intCurrentEnergy + "/" + dataManager.GameManagement.PlayerMaxEnergy;
+            if (energyManager.intCurrentEnergy == dataManager.GameManagement.PlayerMaxEnergy)
+            {
+                ReadyText.text = "Move Ready";
+            }
+            else
+            {
+                ReadyText.text = string.Empty;
+            }
         }
     }
 
