@@ -29,6 +29,7 @@ public class InputHandler : MonoBehaviour
     private BossUIManager bossUIManager;
     private EnergyManager energyManager;
     private TransitionManager transitionManager;
+    private DanceAudioManager danceAudioManager;
     #endregion
 
     private void Awake()
@@ -37,6 +38,7 @@ public class InputHandler : MonoBehaviour
         bossUIManager = GameObject.Find("Canvas").GetComponent<BossUIManager>();
         dataManager = gameManager.GetComponent<DataManager>();
         transitionManager = gameManager.GetComponent<TransitionManager>();
+        danceAudioManager = GetComponent<DanceAudioManager>();
     }
 
     void Update()
@@ -112,16 +114,19 @@ public class InputHandler : MonoBehaviour
         {
             PointsArray[0] = 100;
             bossUIManager.PopUp(100);
+            danceAudioManager.notehitOneShot();
         }
         else if (timing < 0.45 || timing > 0.65)
         {
             PointsArray[0] = 200;
             bossUIManager.PopUp(200);
+            danceAudioManager.notehitOneShot();
         }
         else
         {
             PointsArray[0] = 300;
             bossUIManager.PopUp(300);
+            danceAudioManager.wellDoneOneShot();
         }
         /*
         uiManager.PointHistoryUpdate();
@@ -152,6 +157,7 @@ public class InputHandler : MonoBehaviour
             }
             dataManager.GameManagement.PlayerCurrentEnergy = 0;
             energyManager.MoveReady = false;
+            danceAudioManager.victoryOneShot();
         }
     }
     #endregion

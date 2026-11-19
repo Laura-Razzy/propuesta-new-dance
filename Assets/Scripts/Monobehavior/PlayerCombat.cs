@@ -12,10 +12,13 @@ public class PlayerCombat : MonoBehaviour
     private DataManager dataManager;
     private BossUIManager bossUIManager;
     private TransitionManager transitionManager;
+    private AudioManager audioManager;
+    public Animator anim;
     #endregion
 
     private void Start()
     {
+        audioManager = GetComponent<AudioManager>();
         playerMovement = GetComponent<PlayerMovement>();
         dataManager = GetComponent<DataManager>();
 //        bossUIManager = GameObject.Find("Canvas").GetComponent<BossUIManager>();
@@ -32,13 +35,25 @@ public class PlayerCombat : MonoBehaviour
             if (Input.GetKeyDown("j"))
             {
                 CreateHitbox(Resources.Load<HitboxScriptable>("Hitbox/Punch"), transform.position.x + 1, transform.position.y + 0.25f);
+                anim.SetBool("Idle", false); 
+                anim.SetBool("Egyptian", true);
+                audioManager.hitOneShot();
                 Debug.Log("Punch!");
             }
             if (Input.GetKeyDown("k"))
             {
                 CreateHitbox(Resources.Load<HitboxScriptable>("Hitbox/Kick"), transform.position.x + 1, transform.position.y - 1);
+                anim.SetBool("Idle", false); 
                 Debug.Log("Kick!");
+                audioManager.hitOneShot();
+                anim.SetBool("YMCA", true);
             }
+        }
+        else
+        {
+            anim.SetBool("Egyptian", false);
+            anim.SetBool("YMCA", false);
+            anim.SetBool("Idle", true); 
         }
     }
 
@@ -53,11 +68,13 @@ public class PlayerCombat : MonoBehaviour
     public void PlayerTakeDamage(float DamageTaken)
     {
         dataManager.GameManagement.PlayerHP -= DamageTaken;
+        audioManager.damageOneShot();
         Debug.Log(dataManager.GameManagement.PlayerHP);
         if (dataManager.GameManagement.PlayerHP <= 0)
         {
             Debug.Log("You Lose!");
-//            bossUIManager.GameOver();
+            audioManager.deathOneShot();
+            Destroy(gameObject);
             Time.timeScale = 0;
         }
     }

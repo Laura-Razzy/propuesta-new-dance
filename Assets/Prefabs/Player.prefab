@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHitboxPrefab: {fileID: 6217109746953886632, guid: 4d61db48091ddef4282bd60151e3b187, type: 3}
+  anim: {fileID: 7882537537685387619}
 --- !u!61 &4491527736653786761
 BoxCollider2D:
   m_ObjectHideFlags: 0
