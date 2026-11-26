@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 7069281090531114716}
   - component: {fileID: 3670130696215852106}
   - component: {fileID: 8078993943672193582}
+  - component: {fileID: 1264902863296652089}
   - component: {fileID: 4491527736653786761}
   - component: {fileID: 7882537537685387619}
   - component: {fileID: 3920912378082243797}
@@ -259,6 +260,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHitboxPrefab: {fileID: 6217109746953886632, guid: 4d61db48091ddef4282bd60151e3b187, type: 3}
   anim: {fileID: 7882537537685387619}
+--- !u!114 &1264902863296652089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7910688661338547923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92191200651ada546a678a55d0d6c8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SFXSource: {fileID: 0}
+  hitSFX: {fileID: 8300000, guid: a59e40d9dadf66c47a8b24e1de534656, type: 3}
+  deathSFX: {fileID: 8300000, guid: e95bf312226a15349b3a605b9c757dfb, type: 3}
+  damageSFX: {fileID: 8300000, guid: 6e11fe74d6157fb47bef27101ffa87a6, type: 3}
 --- !u!61 &4491527736653786761
 BoxCollider2D:
   m_ObjectHideFlags: 0

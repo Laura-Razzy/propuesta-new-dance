@@ -8,6 +8,8 @@ public class InputHandler : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private float CurrentBeat = 0;
     [SerializeField] private float TotalPoints = 0;
+    private float previousHorizontal;
+    private float previousVertical;
     public enum INPUT
     {
         empty,
@@ -61,25 +63,25 @@ public class InputHandler : MonoBehaviour
     #region Inputs
     void InputTranslator()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || (Input.GetAxisRaw("DPadHorizontal") < 0 && previousHorizontal >= 0))
         {
             transform.position = new Vector3(-6.22f, -1.52f, 0);
             InputDirection = INPUT.left;
             transform.Translate(-1, 0, 0);
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) || (Input.GetAxisRaw("DPadVertical") < 0 && previousVertical >= 0))
         {
             transform.position = new Vector3(-6.22f, -1.52f, 0);
             InputDirection = INPUT.down;
             transform.Translate(0, -1, 0);
         }
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) || (Input.GetAxisRaw("DPadVertical") > 0 && previousVertical <= 0))
         {
             transform.position = new Vector3(-6.22f, -1.52f, 0);
             InputDirection = INPUT.up;
             transform.Translate(0, 1, 0);
         }
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K) || (Input.GetAxisRaw("DPadHorizontal") > 0 && previousHorizontal <= 0))
         {
             transform.position = new Vector3(-6.22f, -1.52f, 0);
             InputDirection = INPUT.right;
@@ -87,6 +89,8 @@ public class InputHandler : MonoBehaviour
         }
         UpdateInputArray(InputDirection);
         InputDirection = INPUT.empty;
+        previousHorizontal = Input.GetAxisRaw("DPadHorizontal");
+        previousVertical = Input.GetAxisRaw("DPadVertical");
     }
 
     void UpdateInputArray(INPUT pressed)

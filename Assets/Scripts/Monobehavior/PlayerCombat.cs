@@ -32,7 +32,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (!playerMovement.isStunned)
         {
-            if (Input.GetKeyDown("j"))
+            if (Input.GetKeyDown("j") || Input.GetKeyDown("joystick button 0"))
             {
                 CreateHitbox(Resources.Load<HitboxScriptable>("Hitbox/Punch"), transform.position.x + 1, transform.position.y + 0.25f);
                 anim.SetBool("Idle", false); 
@@ -40,7 +40,7 @@ public class PlayerCombat : MonoBehaviour
                 audioManager.hitOneShot();
                 Debug.Log("Punch!");
             }
-            if (Input.GetKeyDown("k"))
+            if (Input.GetKeyDown("k") || Input.GetKeyDown("joystick button 1"))
             {
                 CreateHitbox(Resources.Load<HitboxScriptable>("Hitbox/Kick"), transform.position.x + 1, transform.position.y - 1);
                 anim.SetBool("Idle", false); 
